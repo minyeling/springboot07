@@ -1,0 +1,29 @@
+注：
+表名
+    主键
+    普通列
+    外键
+ #下面默认类型为 text
+admin
+    id(int)
+    username(text) password(text)
+
+class
+    classid(int)
+    classname(text) major(text)【专业】 membernum(int)【人数】 instructor(text)【班主任】
+
+course
+    id(int)
+    object【课程名】 teacher【老师】 coursetime【上课时间表】 courseaddress【上课地址】 period【课时】 credit【学分】
+
+fee【费用】
+    id(int)
+    name banji major【专业】 term【学期】 fee arrearage【欠费】
+
+source
+    id(int)
+    time object source banji teacher
+
+student
+    id(int)
+    name sex【性别】 age【年龄】 major【专业】 banji address phonenumber beizhu password dormnum【宿舍号】 bednum【床号】 award【证书】 punish【处分】

@@ -1,0 +1,12 @@
+1.定义拦截器实现 HandlerInterceptor  里面的三个方法
+2.在定义的拦截器上面添加注解 @Compoment （交由容器管理）
+3.新建Config配置文件类，继承 WebMvcConfigurerAdapter，实现其中 addInterceptors() 方法,并在类上添加注解 @Configuration
+4.在方法中添加 新定义的拦截器（同时可以配置拦截哪些路径，和不拦截哪些路径）
+
+注：
+拦截器：Interceptor 在AOP（Aspect-Oriented Programming）中用于在某个方法或字段被访问之前，进行拦截然后在之前或之后加入
+    某些操作。比如日志，安全等。一般拦截器方法都是通过动态代理的方式实现。可以通过它来进行权限验证，或者判断用户是否
+    登陆，或者是像12306 判断当前时间是否是购票时间。
+
+注2：
+三大器在springboot中使用时，首先实现相应的接口定义类，然后通过配置类将其加入到spring容器中，从而实现相应的功能。

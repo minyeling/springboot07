@@ -1,0 +1,4 @@
+1.开启事务
+    位置：启动类
+    动作：添加注解： @EnableTransactionManagement
+2.在Service中，被 @Transactional 注解的方法，将支持事务。如果注解在类上，则整个类的所有方法都默认支持事务。

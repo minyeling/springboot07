@@ -1,0 +1,14 @@
+1.创建一个 监听器 类继承 Listener或其子类（常见：ServletRequestListener、HttpSessionListener）
+2.实现其中的方法（类上面不需要注解）
+3.将其注册到 spring 容器中（在配置文件中注入）
+        @Bean
+        public ServletListenerRegistrationBean listenerRegist() {
+            ServletListenerRegistrationBean srb = new ServletListenerRegistrationBean();
+            MyListener myListener = new MyListener();
+            srb.setListener(myListener);
+            System.out.println(" i am sigion listener");
+            return srb;
+        }
+
+注2：
+三大器在springboot中使用时，首先实现相应的接口定义类，然后通过配置类将其加入到spring容器中，从而实现相应的功能。

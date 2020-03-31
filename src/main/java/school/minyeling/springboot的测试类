@@ -1,0 +1,5 @@
+1.创建一个测试类
+2.在类上面添加
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @SpringBootTest
+3.他会提示你导包，导包后，就可以运行了

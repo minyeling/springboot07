@@ -1,0 +1,16 @@
+在springboot中配置redis
+
+1.现在安装 redis 【这个百度吧，window 或者 linux 上都有】
+    注：
+        若是新安装的，redis在远程，name需要修改配置文件【/etc/redis.conf】
+            (1):注释掉本地 bind 127.0.0.1
+            (2):把protected-mode属性设置no
+2.添加 springboot 与 redis 依赖的 jar 包
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+3.写一个 RedisUtils 配置类，开始使用
+
+
+

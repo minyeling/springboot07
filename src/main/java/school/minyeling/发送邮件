@@ -1,4 +1,4 @@
-总共三步：
+总共四步：
 
 1. jar
     <dependency>
@@ -93,3 +93,20 @@
 
     }
 
+4.  sendMail.jsp
+    <html>
+    <head>
+        <title>Title</title>
+    </head>
+    <body>
+
+    <form action="send" method="post">
+        输入邮件号码：<input name="mailNum" value="xxx@qq.com" type="text"/><br>
+        输入邮件标题：<input name="titleName" value="" type="text"/><br>
+        输入邮件内容：<textarea name="info"></textarea><br>
+        <button type="submit" value="提交">提交</button>
+        <br>
+    </form>
+
+    </body>
+    </html>

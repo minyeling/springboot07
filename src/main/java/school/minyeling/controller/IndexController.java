@@ -2,15 +2,18 @@ package school.minyeling.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import javax.mail.MessagingException;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 
 @RestController
 public class IndexController {
@@ -21,31 +24,50 @@ public class IndexController {
     JavaMailSender jms;
 
     @RequestMapping(value = "send")
-    public
-    String send(){
+    public String send(String mailNum, String titleName, String info) {
         try {
+            System.out.println("=== send  =============");
+            System.out.println(mailNum);
+            System.out.println(titleName);
+            System.out.println(info);
             //建立邮件消息
             SimpleMailMessage mainMessage = new SimpleMailMessage();
             //发送者邮箱
             mainMessage.setFrom(mailusername);
             //接收者邮箱
-            mainMessage.setTo("1760770433@qq.com");
+            mainMessage.setTo(mailNum);
             //发送的邮件标题
-            mainMessage.setSubject("来自豆豆的一封信");
+            mainMessage.setSubject(titleName);
             //发送的内容
-            mainMessage.setText("小奶狗！");
-            System.out.println("123");
+            mainMessage.setText(info);
             //发送
             jms.send(mainMessage);
             return "发送成功";
-        }catch (Exception e){
+        } catch (Exception e) {
             return "发送失败";
         }
     }
 
     //添加附件发送
     @RequestMapping(value = "sends")
-    public String sends() {
+    public String sends(String mailNum, String titleName, String info, @RequestParam("file") MultipartFile file, HttpServletRequest request) {
+
+        if (file.isEmpty()) {
+            return "上传失败，请选择文件";
+        }
+
+        String fileName = file.getOriginalFilename();
+        String filePath = "D:\\a\\";
+        File dest = new File(filePath + fileName);
+        try {
+            file.transferTo(dest);
+//            return "上传成功";
+            System.out.println("成功了");
+            System.out.println(filePath+fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         try {
             //建立邮件消息
             MimeMessage mainMessage = jms.createMimeMessage();
@@ -54,17 +76,17 @@ public class IndexController {
             //发送者邮箱
             helper.setFrom(mailusername);
             //接收者邮箱
-            helper.setTo("123@qq.com");
+            helper.setTo(mailNum);
             //发送的邮件标题
-            helper.setSubject("Springboot发送邮件");
+            helper.setSubject(titleName);
             //发送的内容
-            helper.setText("邮件内容");
+            helper.setText(info);
             //添加附件
-            helper.addAttachment("ATM.pptx", new File("E:\\HTML\\ATM.pptx"));
+            helper.addAttachment(fileName, new File(filePath+fileName));
             //发送
             jms.send(mainMessage);
             return "发送成功";
-        }catch (Exception e){
+        } catch (Exception e) {
             return "发送失败";
         }
     }

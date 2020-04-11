@@ -93,7 +93,7 @@
 
     }
 
-4.  sendMail.jsp
+4.  sendMail.jsp  //不带附件
     <html>
     <head>
         <title>Title</title>
@@ -110,3 +110,5 @@
 
     </body>
     </html>
+
+5. sendsMail.jsp  //带附件

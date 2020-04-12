@@ -13,8 +13,8 @@
 <body>
 
 <form action="sends" method="post" enctype="multipart/form-data">
-    输入邮件号码：<input name="mailNum" value="2024896559@qq.com" type="text"/><br>
-    输入邮件标题：<input name="titleName" value="有附件" type="text"/><br>
+    输入邮件号码：<input name="mailNum" value="xxx@qq.com" type="text"/><br>
+    输入邮件标题：<input name="titleName" value="" type="text"/><br>
     输入邮件内容：<textarea  name="info"></textarea><br>
     上传附件：<input type="file" name="file">
     <button type="submit" value="提交">提交</button>

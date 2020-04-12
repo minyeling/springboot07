@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -55,7 +54,6 @@ public class IndexController {
         if (file.isEmpty()) {
             return "上传失败，请选择文件";
         }
-
         String fileName = file.getOriginalFilename();
         String filePath = "D:\\a\\";
         File dest = new File(filePath + fileName);
@@ -67,7 +65,6 @@ public class IndexController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
             //建立邮件消息
             MimeMessage mainMessage = jms.createMimeMessage();
